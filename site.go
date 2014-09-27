@@ -11,7 +11,10 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+  var sections = readSections()
+  for _, ss := range sections {
+    ss.inspect()
+  }
   // http.HandleFunc("/", indexHandler)
   // http.ListenAndServe(":8080", nil)
-  readSections()
 }

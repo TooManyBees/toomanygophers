@@ -34,8 +34,8 @@ type Sect struct {
 
 func (ss *Sect) inspect() {
   fmt.Printf("%s { %s, %s }\n", ss.Title, ss.MainPic, ss.MenuPic)
-  for i := range ss.Lines {
-    ss.Lines[i].inspect()
+  for _, l := range ss.Lines {
+    l.inspect()
   }
 }
 
@@ -43,11 +43,12 @@ const sectDir = "./sections"
 func readSections() ([]Sect) {
   files, _ := ioutil.ReadDir(sectDir)
   var sections []Sect
-  for i := range files {
-    j, _ := ioutil.ReadFile(path.Join(sectDir, files[i].Name()))
-    ss := &Sect{}
-    json.Unmarshal(j, ss)
-    ss.inspect()
+  sections = make([]Sect, len(files))
+  for i, f := range files {
+    j, _ := ioutil.ReadFile(path.Join(sectDir, f.Name()))
+    ss := Sect{}
+    json.Unmarshal(j, &ss)
+    sections[i] = ss
   }
   return sections
 }
