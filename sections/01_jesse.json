@@ -1,0 +1,12 @@
+{
+  "title": "Jesse Kipp",
+  "mainPic": "whatever.jpg",
+  "menuPic": "whatever2.jpg",
+  "lines": [
+    { "title": "GitHub",
+      "href": "http://github.com/TooManyBees" },
+    { "title": "Asteroids",
+      "href": "#",
+      "id": "asteroids" }
+  ]
+}

@@ -1,0 +1,34 @@
+.frame {
+  position: relative;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.sidebar li {
+  position: relative;
+}
+
+.sidebar li noscript {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #272822;
+  padding: 4px;
+  border: 1px dotted #fd78a8;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 90%;
+}
+
+.sidebar li:hover noscript {
+  display: block;
+}

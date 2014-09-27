@@ -1,0 +1,55 @@
+#avatar>.content {
+  background-image:    url('graphics/midgaardia.jpg');
+  background-position: 50% 50px;
+  background-repeat:   no-repeat;
+}
+
+#spamusement>.content{
+  background-image:    url('graphics/spamusement.jpg');
+  background-position: center bottom;
+  background-repeat:   no-repeat;
+}
+
+#esbe>.content {
+  background-image:    url('graphics/esbe.jpg');
+  background-position: bottom left;
+  background-repeat:   no-repeat;
+}
+
+.mainrow {
+  margin-top:  10px;
+  height:      600px;
+}
+
+/*Always used in conjunction with .content.*/
+.sidebar {
+  width:   290px;
+  height:  100%;
+}
+
+.sidebar h1 {
+  margin-left:  0.5em;
+  margin-right: 0.5em;
+}
+
+.sidebar.left {
+  text-align: right;
+}
+
+.sidebar.right {
+  text-align: left;
+}
+
+.sidebar ul {
+  position:   relative;
+  top:        10%;
+  margin:     0;
+  padding:    0;
+  list-style: none;
+}
+
+.sidebar li {
+  margin:      1em;
+  font-size:   1.25em;
+  font-family: sans-serif;
+}

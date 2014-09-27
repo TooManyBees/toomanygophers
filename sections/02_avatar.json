@@ -1,0 +1,13 @@
+{
+  "title": "Avatar MUD",
+  "mainPic": "whatever.jpg",
+  "menuPic": "whatever2.jpg",
+  "lines": [
+    { "title": "Area and Mobprog Tools",
+      "href": "/avtools" },
+    { "title": "Avatar Wiki",
+      "href": "http://avatar.melanarchy.info" },
+    { "title": "Outland.org",
+      "href": "http://www.outland.org" }
+  ]
+}

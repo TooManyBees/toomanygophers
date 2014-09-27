@@ -1,0 +1,13 @@
+{
+  "title": "Spamusement",
+  "mainPic": "whatever.jpg",
+  "menuPic": "whatever.jpg",
+  "lines" : [
+    { "title": "Spamusement Pop Quiz!",
+      "href": "/quiz" },
+    { "title": "Spamusers Forums",
+      "href": "http://www.spamusers.com/forums" },
+    { "title": "Spamusement!",
+      "href": "http://www.spamusement.com" }
+  ]
+}
