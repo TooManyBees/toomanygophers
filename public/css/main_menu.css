@@ -1,0 +1,74 @@
+#avatar > .picture-frame {
+  background-image: url("../i/bricks-small.jpg"); }
+#avatar > .sidebar {
+  background-image: url("../i/midgaardia.jpg");
+  background-position: 50% 50px; }
+
+#spamusement > .picture-frame {
+  background-image: url("../i/bluesky-small.jpg"); }
+#spamusement > .sidebar {
+  background-image: url("../i/spamusement.jpg");
+  background-position: center bottom; }
+
+#esbe > .picture-frame {
+  background-image: url("../i/glance-small.jpg"); }
+#esbe > .sidebar {
+  background-image: url("../i/esbe.jpg");
+  background-position: bottom left; }
+
+.mainrow {
+  position: relative;
+  margin-top: 10px;
+  height: 600px; }
+
+.picture-frame {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 600px;
+  height: 600px; }
+
+.sidebar {
+  width: 290px;
+  height: 100%;
+  background-color: #2f3029;
+  border-radius: 10px;
+  background-repeat: no-repeat; }
+  .sidebar h1 {
+    margin-left: 0.5em;
+    margin-right: 0.5em; }
+  .sidebar ul {
+    position: relative;
+    top: 10%;
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  .sidebar li {
+    margin: 1em;
+    font-size: 1.25em;
+    font-family: sans-serif; }
+
+.mainrow:nth-child(even) > .picture-frame {
+  float: left; }
+.mainrow:nth-child(even) > .sidebar {
+  float: right;
+  text-align: left; }
+.mainrow:nth-child(even) li:before {
+  content: "";
+  display: inline-block;
+  background-image: url("../i/bee16.png");
+  height: 16px;
+  width: 16px;
+  margin-right: 8px; }
+
+.mainrow:nth-child(odd) > .picture-frame {
+  float: right; }
+.mainrow:nth-child(odd) > .sidebar {
+  float: left;
+  text-align: right; }
+.mainrow:nth-child(odd) li:after {
+  content: "";
+  display: inline-block;
+  background-image: url("../i/bee16.png");
+  height: 16px;
+  width: 16px;
+  margin-left: 8px; }

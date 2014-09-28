@@ -1,140 +1,113 @@
 .clf:after {
-  content:"";
+  content: "";
   clear: both;
-  display: table;
-}
+  display: table; }
 
 .anim_target {
   margin: auto;
   display: block;
-  background-color: black;
-}
+  background-color: black; }
 
 body, main, section, div, p, ul, li, h1, h2, h3 {
-  margin: 0;
-}
+  margin: 0; }
 
 body {
   background-color: #272822;
-  color:            #fd78a8;
-  font-family: sans-serif;
-}
+  color: #fd78a8;
+  font-family: sans-serif; }
 
 main {
   margin: auto;
-  width:  900px;
-  position: relative;
-}
+  width: 900px;
+  position: relative; }
 
 h1 {
-  margin: 20px 0;
-}
+  margin: 20px 0; }
 
 a {
   text-decoration: none;
-  color:           #dd6898;
-  text-shadow:     1px 1px 1px #070802;
-}
-
-a:hover {
-  color: #ff94c0;
-}
+  color: #dd6898;
+  text-shadow: 1px 1px 1px #070802; }
+  a:hover {
+    color: #ff94c0; }
 
 img {
-  display: block;
-}
+  display: block; }
 
-img.emote{
-  display:  inline-block;
+.emote {
+  display: inline-block;
   position: relative;
-  top:      2px;
-}
+  top: 2px; }
 
 tt {
   padding: 0 3px;
   border-radius: 3px;
   background-color: #fffae3;
-  border: 1px dotted #fd78a8;
-}
+  border: 1px dotted #fd78a8; }
 
 code, samp {
-  color: #ffd4f0;
-}
+  color: #ffd4f0; }
 
-/*Used in the divs that enclose a code or samp element*/
+/*Used in the divs that enclose a code or samp element */
 .output {
   border-radius: 5px;
   border: 1px solid #fd78a8;
   background-color: #272822;
-  padding:          0.25em 0.5em;
-}
+  padding: 0.25em 0.5em; }
 
-.left {
-  float: left;
-}
+.cBR {
+  color: red; }
 
-.right {
-  float: right;
-}
+.cR {
+  color: #990000; }
 
-.cBR { color: #F00; }
-.cR { color: #900; }
-.cC { color: #099;}
-.comment { color: #777;}
+.cC {
+  color: #009999; }
+
+.comment {
+  color: #777777; }
 
 .logo {
-  width:  550px;
-  margin: 30px auto;
-  clear:  both;
-}
-
-/*A div meant to hold a picture, which rounds its corners*/
-.frame {
-  border-radius: 10px;
-  overflow:      hidden;
-}
+  display: block;
+  margin: 30px 0;
+  clear: both; }
+  .logo > img {
+    margin: auto; }
 
 .content {
   background-color: #2f3029;
-  border-radius:    10px;
-}
+  border-radius: 10px; }
 
-/*Indicates that it spans the entire page width.*/
+/*Indicates that it spans the entire page width. */
 .sheet {
   position: relative;
-  font-size:   1.25em;
-  padding:     1em;
-  margin-top:  10px;
+  font-size: 1.25em;
+  padding: 1em;
+  margin-top: 10px;
   font-weight: lighter;
   line-height: 120%;
   border-radius: 5px;
   background-color: #ffedd3;
-  color: #2f3029;
-}
+  color: #2f3029; }
 
 .sheet h1, .sheet h2, .sheet h3 {
-  color: #c94f82;
-}
+  color: #c94f82; }
 
 .sheet h1 {
-  text-align: center;
-}
+  text-align: center; }
 
 .sheet h2 {
   margin: 0.5em 0;
-  padding: 0.15em 0;
-}
+  padding: 0.15em 0; }
 
 .sheet h2 a {
   color: #dd6898;
   text-shadow: 1px 1px 1px #7a4f38;
   vertical-align: middle;
-  font-size: 80%;
-}
+  font-size: 80%; }
 
 .sheet h2 a:hover {
-  color: #ff94c0;
-}
+  color: #ff94c0; }
 
 .sheet h3 {
   text-align: center;
@@ -144,55 +117,44 @@ code, samp {
   font-size: 100%;
   line-height: 150%;
   margin-top: -0.5em;
-  margin-bottom: 2em;
-}
+  margin-bottom: 2em; }
 
 .sheet p {
-  margin: 20px 0;
-}
+  margin: 20px 0; }
 
-.sheet>img {
-  margin: auto;
-}
+.sheet > img {
+  margin: auto; }
 
 .sheet ul {
   margin: 0;
   padding: 0;
-  list-style-image: url('graphics/bee16.png');
-}
+  list-style-image: url("../i/bee16.png"); }
 
 .sheet li {
   margin-bottom: 0.1em;
-  margin-left: 1.25em;
-}
+  margin-left: 1.25em; }
 
 .sheet .frame {
-  margin-left: 1em;
-}
+  margin-left: 1em; }
 
 .aside {
   width: 540px;
-  float: left;
-}
+  float: left; }
 
 .segment {
-  margin-top: 1em;
-}
+  margin-top: 1em; }
 
 .blur {
   position: absolute;
   left: 0;
   height: 135px;
   width: 900px;
-  z-index: -10;
-}
+  z-index: -10; }
 
 .blur:first-child {
   top: -30px;
-  background: #f8e3bc url('graphics/smear.jpg') no-repeat top;
-}
+  background: #f8e3bc url("../i/smear.jpg") no-repeat top; }
 
 .blur:last-child {
   bottom: -30px;
-  background: #f8e3bc url('graphics/smear.jpg') no-repeat bottom;
-}
+  background: #f8e3bc url("../i/smear.jpg") no-repeat bottom; }
