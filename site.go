@@ -1,20 +1,18 @@
 package main
 
 import (
-  // "html/template"
+  "html/template"
   "net/http"
-  "fmt"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintf(w, "hi")
+  sections := readSections()
+  indexTempl := template.Must(template.ParseFiles("templates/main/index.html"))
+  indexTempl.Execute(w, sections)
 }
 
 func main() {
-  var sections = readSections()
-  for _, ss := range sections {
-    ss.inspect()
-  }
-  // http.HandleFunc("/", indexHandler)
-  // http.ListenAndServe(":8080", nil)
+  http.HandleFunc("/", indexHandler)
+  http.Handle("/s/", http.StripPrefix("/s/", http.FileServer(http.Dir("public"))))
+  http.ListenAndServe(":8080", nil)
 }

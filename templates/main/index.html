@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="en-us" http-equiv="Content-Language">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="icon" type="image/png" href="i/bee32.png">
+<link rel="stylesheet" type="text/css" href="s/css/bees.css">
+<link rel="stylesheet" type="text/css" href="s/css/main_menu.css">
+
+<title>Too Many Bees!</title>
+</head>
+
+<body>
+  <main>
+    <a class="logo" href=".">
+      <img alt="Bees!" width="550" height="61" src="s/i/bees.png">
+    </a>
+
+    {{define "section"}}<section class="mainrow">
+      <div class="picture-frame" style="background-image:url('s/i/{{.MainPic}}');"></div>
+      <div class="sidebar" style="background-image:url('s/i/{{.MenuPic}}');{{.MenuStyle}}">
+        <ul>
+          <h1>{{.Title}}</h1>
+          {{range .Lines}}
+          <li><a id="{{.Id}}" class="{{.Class}}" href="{{.Href}}">{{.Title}}</a></li>
+          {{end}}
+        </ul>
+      </div>
+    </section>{{end}}
+
+    {{range .}}
+    {{template "section" .}}
+    {{end}}
+
+    <a class="logo" href=".">
+      <img alt="Bees!" width="550" height="61" src="s/i/bees.png">
+    </a>
+  </main>
+</body>
+
+</html>

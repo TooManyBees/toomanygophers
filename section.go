@@ -29,6 +29,7 @@ type Sect struct {
   Title string
   MainPic string
   MenuPic string
+  MenuStyle string
   Lines []*Line
 }
 
@@ -39,8 +40,8 @@ func (ss *Sect) inspect() {
   }
 }
 
-const sectDir = "./sections"
 func readSections() ([]Sect) {
+  sectDir := "sections"
   files, _ := ioutil.ReadDir(sectDir)
   var sections []Sect
   sections = make([]Sect, len(files))

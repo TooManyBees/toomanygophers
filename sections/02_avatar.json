@@ -1,7 +1,8 @@
 {
   "title": "Avatar MUD",
-  "mainPic": "whatever.jpg",
-  "menuPic": "whatever2.jpg",
+  "mainPic": "bricks-small.jpg",
+  "menuPic": "midgaardia.jpg",
+  "menuStyle": "background-position: 50% 50%",
   "lines": [
     { "title": "Area and Mobprog Tools",
       "href": "/avtools" },
