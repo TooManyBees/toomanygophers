@@ -9,7 +9,8 @@
   background-color: black; }
 
 body, main, section, div, p, ul, li, h1, h2, h3 {
-  margin: 0; }
+  margin: 0;
+  padding: 0; }
 
 body {
   background-color: #272822;
@@ -48,7 +49,6 @@ tt {
 code, samp {
   color: #ffd4f0; }
 
-/*Used in the divs that enclose a code or samp element */
 .output {
   border-radius: 5px;
   border: 1px solid #fd78a8;
@@ -96,19 +96,6 @@ code, samp {
 .sheet h1 {
   text-align: center; }
 
-.sheet h2 {
-  margin: 0.5em 0;
-  padding: 0.15em 0; }
-
-.sheet h2 a {
-  color: #dd6898;
-  text-shadow: 1px 1px 1px #7a4f38;
-  vertical-align: middle;
-  font-size: 80%; }
-
-.sheet h2 a:hover {
-  color: #ff94c0; }
-
 .sheet h3 {
   text-align: center;
   font-weight: lighter;
@@ -122,39 +109,27 @@ code, samp {
 .sheet p {
   margin: 20px 0; }
 
-.sheet > img {
-  margin: auto; }
-
 .sheet ul {
-  margin: 0;
-  padding: 0;
   list-style-image: url("../i/bee16.png"); }
 
 .sheet li {
   margin-bottom: 0.1em;
   margin-left: 1.25em; }
 
-.sheet .frame {
-  margin-left: 1em; }
-
-.aside {
-  width: 540px;
-  float: left; }
-
-.segment {
-  margin-top: 1em; }
-
-.blur {
+.sheet:first-of-type:before,
+.sheet:last-of-type:after {
+  content: "";
   position: absolute;
   left: 0;
   height: 135px;
-  width: 900px;
-  z-index: -10; }
+  width: 100%;
+  z-index: -10;
+  background: #f8e3bc url("../i/smear.jpg") no-repeat; }
 
-.blur:first-child {
-  top: -30px;
-  background: #f8e3bc url("../i/smear.jpg") no-repeat top; }
+.sheet:first-of-type:before {
+  top: -120px;
+  background-position: top; }
 
-.blur:last-child {
-  bottom: -30px;
-  background: #f8e3bc url("../i/smear.jpg") no-repeat bottom; }
+.sheet:last-of-type:after {
+  bottom: -120px;
+  background-position: bottom; }
