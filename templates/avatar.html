@@ -1,0 +1,121 @@
+{{define "title"}}Avatar Area Tools{{end}}
+{{define "stylesheets"}}{{end}}
+
+{{define "body"}}
+<article class="sheet">
+  <h1>Av Verifier</h1>
+  <h3>
+    - or -<br>
+    If I were truly vain, I would have gone with <strong>Sceverify</strong>
+  </h3>
+  <p>
+    The area and mobprog verifier are command line programs written in Ruby. They require Ruby 1.9.3 or later. Mac OSX and many Linux repositories default to ruby 1.8.7, and that simply <em>will not do.</em> Windows users should use <a href="http://www.microsoft.com/powershell">PowerShell</a> to enable colorized output.
+  </p>
+  <p>
+    <img class="emote" src="../s/i/bee16.png">
+    <a href="http://www.ruby-lang.org/en/downloads">Get Ruby 1.9.3 or later</a>
+    <img class="emote" src="../s/i/bee16.png">
+    <a href="https://github.com/TooManyBees/Av-Verify">Get latest version from GitHub</a>
+    <img class="emote" src="../s/i/bee16.png">
+    <a href="../s/avatar-verifier.zip">(old version)</a>
+  </p>
+  <h2>Usage</h2>
+  <p>
+    With Ruby installed, extract all <tt>.rb</tt> files in the <tt>lib</tt> directory to the same location. (Using the old version? There's no folder structure to them, they all go in the same place.) I drop them at the root of my areas folder. From the console run <tt>ruby varea.rb path/to/myarea.are</tt> for area files, and <tt>ruby vprog.rb path/to/myprog.prg</tt> for prog files. You will either see:
+  </p>
+  <p class="output">
+    <samp>
+      Parsing .\myarea.are...<br>
+      No errors found.
+    </samp>
+  </p>
+  <p>if there's nothing wrong, or something like:</p>
+  <p class="output">
+    <samp>
+      Parsing .\myarea.are...<br>
+      Someone's been a NAUGHTY builder! <span class="cBR">1 error</span>, <span class="cR">0 warnings</span>, <span class="cC">4 cosmetic issues.</span><br>
+      <span class="cBR">Line 3768:</span> Door lock type out of bounds 0 to 8<br>
+      <span class="cBR">--></span> 9 9 27473
+    </samp>
+  </p>
+  <p>
+    if there is. The line that begins with <tt>--></tt> is the actual offending line from the parsed file. The vprog output is very much similar to what's shown above.
+  </p>
+  <p>
+    There are a few optional parameters you can feed varea and vprog.
+    <ul>
+      <li><tt>nowarning</tt> suppresses warnings. The most common warnings are for resets of objects and mobs that aren't in the area file, or calls to functions that aren't in the prog file.</li>
+      <li><tt>cosmetic</tt> (varea only) displays cosmetic warnings that are suppressed by default (as you can see in the above sample). They typically consist of door or edecs with their tildes on the wrong line.</li>
+      <li><tt>notices</tt> (varea only) displays notices that are suppressed by default. They typically consist of room exits leaving the area, or when a section can't be found in the file.</li>
+      <li><tt>showunknown</tt> (vprog only) displays all 2-character trigger names which are not the predefined types. Naturally most prog files will have several of these, so typically only check this type of output once in a while.</li>
+      <li><tt>nocolor</tt> removes all ANSI color codes from the output. Useful if you're piping output to a file or program.</li>
+    </ul>
+  </p>
+  <h2>Updating</h2>
+  <p>
+    I intentionally wrote the verifiers in an interpreted language so that anyone can make changes when necessary. This avoids the problem we had previously, in which we had outdated verifiers that nobody could change, which would break when they parsed newer features.
+  </p>
+  <p>
+    If the verifier ever throws an error or warning about a new feature, check first in <tt>avconstants.rb</tt> and <tt>progconstants.rb</tt>, which is where many ranges, spec_funs, and conditions are defined. Take, for example:
+  </p>
+  <p class="output">
+    <code>
+      <span class="comment"># The three main sections. Script will flip out if it finds an<br/>
+      # unidentified one in the file it's checking.</span><br/>
+      SECTIONS = %w{ PROGS_MOB PROGS_ROOM PROGS_FUN }<br/>
+      <span class="comment"># The known trigger types. Script will not flip out if it finds<br/>
+      # an unknown one, but it will throw a minor error (which is<br/>
+      # suppressed by default)</span><br/>
+      TRIGGERS = %w{ ER LR DO GO TI GG FO DS BO ST TE EC KS CC FA FC }
+    </code>
+  </p>
+  <p>
+    from the beginning of <tt>progconstants.rb</tt>. Hopefully it should be pretty clear how to extend those.
+  </p>
+
+  <p>
+    <tt>varea.rb</tt> was recently refactored to make it more object oriented and easier to extend and maintain. If you discover any bugs... well, it's on GitHub. Either do your thing or contact me ingame. Also consider using the old version (available zipped on this site, or on GitHub under the tag <a href="https://github.com/TooManyBees/Av-Verify/tree/v1-public">v1-public</a>). <tt>vprog.rb</tt> will not receive the same treatment because oh my god no never.
+  </p>
+  <p>
+    If you need to make any changes to <tt>varea.rb</tt>, note that the project is set up to test with <a href="https://github.com/rspec/rspec">rspec</a>, so use that. Objects and rooms don't have complete specs yet, but writing tests is not my idea of a great weekend, so I'll get to them when I get to them (and their superclass VnumSection <em>is</em> tested as a part of Mobiles). Also, if you need to make changes to <tt>vprog</tt>, you're on your own, kid.
+  </p>
+  <p>
+    Future goals for this project include making the <tt>varea.rb</tt> half of the verifier present a proper, consistent API so that it can be plugged into, say, an online area builder or whathaveyou. That was part of the reason behind the refactoring. It is partially in place, but not extremely robust.
+  </p>
+</article>
+<article class="sheet">
+<h1>Avatar Presets for Sublime Text 2</h1>
+  <!-- <img src="graphics/sublime-screen1.gif"> -->
+  <!-- Good times ahead: http://www.sublimetext.com/~jps/animated_gifs_the_hard_way.html -->
+  <canvas id="anim_target" class="anim_target" width="813" height="523">
+  <div id="anim_fallback" class="anim_target" style="position: relative;"></div>
+  </canvas>
+  <p>
+    My current editor for area and mobprog files. The settings I use are available for download.
+  </p>
+  <p>
+    <img class="emote" src="../s/i/bee16.png"/>
+    <a href="http://www.sublimetext.com">Get Sublime Text</a>
+    <img class="emote" src="../s/i/bee16.png"/>
+    <a href="sublime-text-settings.zip">Download sublime-text-settings.zip</a>
+  </p>
+  <ul>
+    Deposit settings files yonder:
+    <li><tt>~/Library/Application Support/Sublime Text 2/Packages/User</tt></li>
+    <li><tt>~/.config/sublime-text-2/Packages/User</tt></li>
+    <li><tt>%APPDATA%/Sublime Text 2/Packages/User</tt></li>
+  </ul>
+  <div>
+    <h2>Features include</h2>
+    <p>Syntax highlighting obviously. But chiefly, highlights a missing <tt>~</tt>.</p>
+    <p>In area files, a vertical rule at 72 characters.</p>
+    <p>Snippets for generating frameworks of mobs, objects, and rooms. Inside the <tt>#MOBILES</tt>, <tt>#OBJECTS</tt>, and <tt>#ROOMS</tt> sections, you can type <tt>#</tt> and hit tab to create a blank entry. You can tab and shift-tab through its fields as you edit it.</p>
+  </div>
+</article>
+
+<!-- <script type="text/javascript" src="forge_anim.js"></script>
+<script type="text/javascript" src="canvas.js"></script>
+<script type="application/javascript">
+  set_animation("forge_sublime.png", forge_timeline, 'anim_target', 'anim_fallback');
+</script> -->
+{{end}}
