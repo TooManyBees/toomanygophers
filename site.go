@@ -5,10 +5,12 @@ import (
   "net/http"
 )
 
+const templateDir = "templates"
+
 func indexHandler(w http.ResponseWriter, r *http.Request) {
   sections := readSections()
-  indexTempl := template.Must(template.ParseFiles("templates/main/index.html"))
-  indexTempl.Execute(w, sections)
+  indexTempl := template.Must(template.ParseFiles("templates/_base.html", "templates/main.html"))
+  indexTempl.ExecuteTemplate(w, "page", sections)
 }
 
 func main() {

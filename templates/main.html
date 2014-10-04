@@ -1,0 +1,22 @@
+{{define "title"}}TooManyBees!{{end}}
+{{define "stylesheets"}}
+<link rel="stylesheet" type="text/css" href="s/css/main_menu.css">
+{{end}}
+
+{{define "section"}}<section class="mainrow">
+  <div class="picture-frame" style="background-image:url('s/i/{{.MainPic}}');"></div>
+  <div class="sidebar" style="background-image:url('s/i/{{.MenuPic}}');{{.MenuStyle}}">
+    <ul>
+      <h1>{{.Title}}</h1>
+      {{range .Lines}}
+      <li><a id="{{.Id}}" class="{{.Class}}" href="{{.Href}}">{{.Title}}</a></li>
+      {{end}}
+    </ul>
+  </div>
+</section>{{end}}
+
+{{define "body"}}
+{{range .}}
+{{template "section" .}}
+{{end}}
+{{end}}
