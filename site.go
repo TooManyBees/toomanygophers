@@ -1,20 +1,17 @@
 package main
 
 import (
-  "html/template"
   "net/http"
 )
 
-const templateDir = "templates"
-
 func indexHandler(w http.ResponseWriter, r *http.Request) {
   sections := readSections()
-  indexTempl := template.Must(template.ParseFiles("templates/_base.html", "templates/main.html"))
+  indexTempl := pageCache.get("main", "_base", "main")
   indexTempl.ExecuteTemplate(w, "page", sections)
 }
 
 func avatarHandler(w http.ResponseWriter, r *http.Request) {
-  avatarTempl := template.Must(template.ParseFiles("templates/_base.html", "templates/avatar.html"))
+  avatarTempl := pageCache.get("avatar", "_base", "avatar")
   avatarTempl.ExecuteTemplate(w, "page", nil)
 }
 
