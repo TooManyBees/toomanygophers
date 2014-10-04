@@ -26,19 +26,34 @@ func partialsToFilenames(partials []string) []string {
   return mapped
 }
 
-func (p PageCache) get(page string, partials ...string) *template.Template {
-  needsUpdating := false
-  filenames := partialsToFilenames(partials)
+// .get is an abstraction, assuming that the page uses a
+// template of the same name, as well as _base for the layout
+func (p PageCache) get(pages ...string) *template.Template {
+  pages = append(pages, "_base")
+  return p.getTemplate(pages[0], pages...)
+}
 
+// Checks if a pageRecord is out of date.
+// Returns true if any of the files in "filenames" are newer
+// than the record's modified date.
+func (p PageCache) isStale(page string, filenames ...string) bool {
   for _, filename := range filenames {
     fs, _ := os.Stat(filename)
     oldRecord, cached := p[page]
     if !cached || fs.ModTime().After(oldRecord.Modified)  {
-      needsUpdating = true
-      break
+      return true
     }
   }
-  if needsUpdating {
+  return false
+}
+
+// A get/set function that gets the template keyed under "page",
+// loading/compiling/saving the template if it's missing or out
+// of date.
+func (p PageCache) getTemplate(page string, partials ...string) *template.Template {
+  filenames := partialsToFilenames(partials)
+
+  if p.isStale(page, filenames...) {
     templ := template.Must(template.ParseFiles(filenames...))
     p[page] = PageRecord{templ, time.Now()}
     fmt.Printf("  miss (%s)", page)

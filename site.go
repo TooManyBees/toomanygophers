@@ -7,12 +7,12 @@ import (
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
   sections := readSections()
-  indexTempl := pageCache.get("main", "_base", "main")
+  indexTempl := pageCache.get("main")
   indexTempl.ExecuteTemplate(w, "page", sections)
 }
 
 func avatarHandler(w http.ResponseWriter, r *http.Request) {
-  avatarTempl := pageCache.get("avatar", "_base", "avatar")
+  avatarTempl := pageCache.get("avatar")
   avatarTempl.ExecuteTemplate(w, "page", nil)
 }
 
