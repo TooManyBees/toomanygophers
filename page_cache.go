@@ -16,7 +16,6 @@ type PageRecord struct {
 }
 
 type PageCache map[string]PageRecord
-var pageCache = PageCache{}
 
 func partialsToFilenames(partials []string) []string {
   mapped := make([]string, len(partials))

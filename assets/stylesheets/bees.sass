@@ -1,9 +1,9 @@
 $dark-gray: #272822
 $dark-gray-accent: #2f3029
-$foreground: #fd78a8
+$medium-pink: #fd78a8
 $cream: #ffedd3
-$link-normal: #dd6898
-$link-hover: #ff94c0
+$deep-pink: #dd6898
+$light-pink: #ff94c0
 
 .clf:after
   content: ""
@@ -21,7 +21,7 @@ body, main, section, div, p, ul, li, h1, h2, h3
 
 body
   background-color: $dark-gray
-  color:            $foreground
+  color:            $medium-pink
   font-family: sans-serif
 
 main
@@ -34,10 +34,10 @@ h1
 
 a
   text-decoration: none
-  color:           $link-normal
+  color:           $deep-pink
   text-shadow:     1px 1px 1px #070802
   &:hover
-    color: $link-hover
+    color: $light-pink
 
 img
   display: block
@@ -51,17 +51,15 @@ img
 
 tt
   padding: 0 3px
-  border-radius: 3px
   background-color: #fffae3
-  border: 1px dotted $foreground
+  border: 1px dotted $medium-pink
 
 code, samp
   color: #ffd4f0
 
 .output
-  border-radius: 5px
-  border: 1px solid $foreground
-  background-color: #272822
+  border: 1px solid $medium-pink
+  background-color: $dark-gray
   padding:          0.25em 0.5em
 
 .cBR
@@ -133,7 +131,7 @@ code, samp
   height: 135px
   width: 100%
   z-index: -10
-  background: #f8e3bc url('../i/smear.jpg') no-repeat
+  background: $dark-gray url('../i/smear.jpg') no-repeat
 
 .sheet:first-of-type:before
   top: -120px

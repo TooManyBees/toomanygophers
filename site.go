@@ -24,6 +24,7 @@ func loggingHandler(handler func(http.ResponseWriter, *http.Request) ) http.Hand
   }
 }
 
+var pageCache = PageCache{}
 func main() {
   http.HandleFunc("/", loggingHandler(indexHandler))
   http.HandleFunc("/avatar", loggingHandler(avatarHandler))
