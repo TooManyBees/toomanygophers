@@ -24,6 +24,7 @@ type ComicStore struct {
   db *sql.DB
   count int
   dirty bool
+  rand *rand.Rand
 }
 
 func (cs *ComicStore) init() {
@@ -34,6 +35,7 @@ func (cs *ComicStore) init() {
   }
   cs.dirty = true
   cs.db = db
+  cs.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 }
 
 func (cs *ComicStore) debug() {
@@ -58,22 +60,28 @@ func (cs *ComicStore) Count() int {
   return cs.count
 }
 
-var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
+// Return a comma-separated string of numbers from a slice of ints
+// For use in a SQL 'IN' statement, because the sql library is crap
 func sqlIn(arr []int) string {
   raw := fmt.Sprint(arr)
   replaced := strings.Replace(raw, " ", ",", -1)
   return replaced[1:len(replaced)-1]
 }
 
+// Return a random selection of n comics from the Comics table
+// If n >= the number of saved comics, just return the table in original order
 func (cs *ComicStore) random(n int) []Comic {
+  ids := cs.rand.Perm(int(cs.Count()))
+  returnAll := n >= cs.Count()
 
-  if n > cs.Count() {
-    return nil
+  var query string
+  if returnAll {
+    query = fmt.Sprintf("SELECT * FROM comics")
+  } else {
+    query = fmt.Sprintf("SELECT * FROM comics WHERE id IN (%s)", sqlIn(ids[:n]))
   }
 
-  p := rng.Perm(int(cs.Count()))
-  q := fmt.Sprintf("SELECT * FROM comics WHERE id IN (%s)", sqlIn(p[:n]))
-  rows, err := cs.db.Query(q)
+  rows, err := cs.db.Query(query)
   if err != nil {
     fmt.Println(err)
   }
@@ -88,6 +96,7 @@ func (cs *ComicStore) random(n int) []Comic {
     rows.Scan(&id, &title, &image, &alt_image)
     comics = append(comics, Comic{id, title, image})
   }
+
   return comics
 }
 
