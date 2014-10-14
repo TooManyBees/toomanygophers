@@ -33,7 +33,6 @@ INSERT INTO comics (title, image) VALUES
   ('Look...Here', 'BuCMsTxBDjcZHy3Jm8O5yA.png'),
   ('bad email address', 'jpunVKetLYZDNfi61mL1QQ.gif'),
   ('Looking to get back into sh ape?', 'EkJuJwFTC3l8iUOPgDIxSg.gif'),
-  ('Your heart beats over 100,000 times a day', 'CL_hSmBODogi0emwKlkddg.gif'),
   ('Guess what I got', 'mxAJT57D5bG5cEWibzfGlw.png'),
   ('Game Foot', 'SU6HvkSD9b7BAl0oEpxyXA.png'),
   ('Most guys dons''t have what it takes', 'iNNeAsrjpESuYoWer3cusA.png'),
@@ -201,7 +200,12 @@ INSERT INTO comics (title, image) VALUES
   ('Pharm trade', 'fZof_xnqULlGVcXjupPsDw.png'),
   ('cunninglingus strategy', 'jWJ31cHZNlBa44L2WI_9yg.png'),
   ('WeShould HookUp ForSex', 'untT-l-yw6Z7iDmEkaktOg.gif'),
-  ('Re: Haha, help is here', 'a_dILouB-ImXADLKSfmiKg.jpg')
+  ('Re: Haha, help is here', 'a_dILouB-ImXADLKSfmiKg.jpg'),
+  ('We will be seeing fireworks for quite some time', 'Hs-gZYWfQrL6tTvNsfzlrw.png'),
+  ('Check out what all the buzz is about', 'O62pgApTQZkcNjgotmCsrA.png'),
+  ('Announcing the all-new StickyCup mount', 'Nd53iAlwFlOHmZM3fZpVgQ.png'),
+  ('Watsup', 'A8A2HQ45XY4wVliXGX8Ppw.png'),
+  ('I am very attractive', 'XF5afpwevFi765-KSwiriw.png')
 ;
 
 UPDATE comics
