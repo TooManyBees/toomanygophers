@@ -16,6 +16,19 @@ func avatarHandler(w http.ResponseWriter, r *http.Request) {
   avatarTempl.ExecuteTemplate(w, "page", nil)
 }
 
+func quizHandler(w http.ResponseWriter, r *http.Request) {
+  if r.Method == "GET" {
+    comics := comicStore.random(20)
+    for _, c := range comics {
+      fmt.Fprintln(w, c.Title)
+    }
+    //quizTempl := pageCache.getTemplate("quiz", "quiz")
+    //quizTempl.ExecuteTemplate(w, "quiz", comics)
+  } else if r.Method == "POST" {
+    //
+  }
+}
+
 // Wraps an endpoint handler in logging statements, as well as
 // enforcing the allowed HTTP methods for it
 func loggingHandler(handler func(http.ResponseWriter, *http.Request), methods ...string) http.HandlerFunc {
@@ -41,9 +54,12 @@ func loggingHandler(handler func(http.ResponseWriter, *http.Request), methods ..
 }
 
 var pageCache = PageCache{}
+var comicStore = ComicStore{}
 func main() {
+  comicStore.init()
   http.HandleFunc("/", loggingHandler(indexHandler, "GET"))
   http.HandleFunc("/avatar", loggingHandler(avatarHandler, "GET"))
+  http.HandleFunc("/quiz", loggingHandler(quizHandler, "GET", "POST"))
   http.Handle("/s/", http.StripPrefix("/s/", http.FileServer(http.Dir("public"))))
   http.ListenAndServe(":8080", nil)
 }

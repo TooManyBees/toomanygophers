@@ -38,19 +38,6 @@ func (cs *ComicStore) init() {
   cs.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 }
 
-func (cs *ComicStore) debug() {
-  rows, _ := cs.db.Query("SELECT * FROM comics ORDER BY id")
-  defer rows.Close()
-  for rows.Next() {
-    var id int
-    var title string
-    var image string
-    var altImage string
-    rows.Scan(&id, &title, &image, &altImage)
-    fmt.Printf("%d: %s => %s (%s)\n", id, title, image, altImage)
-  }
-}
-
 func (cs *ComicStore) Count() int {
   if cs.dirty {
     row := cs.db.QueryRow("SELECT count(id) FROM comics")
@@ -98,11 +85,4 @@ func (cs *ComicStore) random(n int) []Comic {
   }
 
   return comics
-}
-
-func main() {
-  cs := ComicStore{}
-  cs.init()
-  fmt.Println(cs.Count())
-  fmt.Println(cs.random(5))
 }
