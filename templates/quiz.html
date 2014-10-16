@@ -1,5 +1,7 @@
 {{define "title"}}Spamusement Pop Quiz!{{end}}
-{{define "stylesheets"}}{{end}}
+{{define "stylesheets"}}
+<link rel="stylesheet" type="text/css" href="s/css/quiz.css">
+{{end}}
 
 {{define "comic_title"}}
 <a href="#" data-id="{{.Id}}">{{.Title}}</a>
@@ -37,6 +39,6 @@
 {{range .}}
 {{template "comic_image" .}}
 {{end}}
-<input type="submit" value="YOU WILL SUBMIT">
+<input class="submit-quiz" type="submit" value="YOU WILL SUBMIT">
 </form>
 {{end}}

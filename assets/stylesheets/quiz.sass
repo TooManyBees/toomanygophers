@@ -1,0 +1,222 @@
+.header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  height: 2.5em
+  background-color: transparent
+  overflow: hidden
+
+/* Both "title text" and "title url" have this class */
+  .title
+    vertical-align: middle
+    display: inline-block
+    margin-left: 10px
+    font-size: 1.75em
+    &.title.vanish
+      display: none
+
+  .url
+    display: none
+    color: #FFFFFF
+    font-size: 1.75em
+    &.yet_still_visible
+      display: inline-block
+
+.instructions
+  width: 45em
+  padding: 0.5em
+  border: 1px dotted #45473d
+  border-radius: 4px
+  background-color: #2f3029
+  p
+    text-align: center
+    font-size: 1.25em
+    margin-top: 0.25em
+    margin-bottom: 0.25em
+  ul
+    margin-top: 0em
+    margin-left: -1em
+  li
+    margin-top: 0.3em
+  .duplicate
+    /*background-color: #3d3131*/
+    border: 2px solid #A00
+    border-radius: 4px
+    padding-left: 2px
+    padding-right: 2px
+  em
+    color: #6fdbff
+
+.button
+  cursor: pointer
+  display: inline-block
+
+  border-radius: 0.25em
+  border: 2px solid black
+
+  background-color: #45473d
+
+  height: 1.5em
+  width: 7em
+  text-align: center
+  margin-top: 0.4em
+  vertical-align: middle
+  margin-left: 0.5em
+  float: left
+  &.right
+    float: right
+    margin-left: 0em
+    margin-right: 0.5em
+  &:hover
+    background-color: #57594d
+  &.depressed
+    color: #8d435e
+    background-color: #CEC
+    box-shadow: 0px 0px 10px #000 inset
+  a
+    text-decoration: none
+
+#wrapper
+  margin-top: 2.5em
+  left: 10px
+  right: 360px
+  bottom: 0
+  &>p
+    margin-left: 5em
+
+.palette
+  display: none
+  position: fixed
+  width: 350px
+  right: 0
+  top: 2.5em
+  bottom: 0
+  background-color: transparent
+  border-left: 3px solid #fd78a8
+  padding: 5px
+  overflow: auto
+  a
+    text-shadow: none
+  #CLEAR
+    text-align: center
+    /*background-color: #A14*/
+    background-color: #b35477
+    color: #EEE
+    font-weight: bold
+    font-style: italic
+    &.show
+      display: block
+  &.current
+    display: block
+  a
+    color: #fd78a8
+    cursor: pointer
+    display: block
+    padding: 2px 0px
+    text-decoration: none
+    border-bottom: 1px dotted #45473d
+    &.chosen
+      display: none
+      &.yet_still_visible
+        display: block
+    &:hover
+      color: #ff84b0
+      background-color: #3b3d34
+    &:active
+      color: #ffa6c6
+      background-color: #3b3d34  
+    &.chosen,
+    &.chosen:hover
+      color: #888
+    &.chosen:active
+      color: #AAA
+
+    &.duplicate
+      background-color: #3d3436
+      color: #888
+    &.duplicate:hover,
+    &.duplicate:active
+      background-color: #4d4144
+
+.header.background, .palette.background
+  opacity: 0.95
+  background-color: #272822
+
+.question
+  margin: 10px 10px 10px 0
+  padding: 10px
+  cursor: pointer
+
+  background-color: transparent
+  border: 3px solid #272822
+  border-radius: 4px
+  
+  font-size: 1.5em
+  color: #EEE
+
+  display: block
+  float: left
+  clear: both
+.question:hover
+  border-color: #45473d
+  background-color: #45473d
+.question.answered
+  background-color: #313d32
+  border: 3px solid #080
+.question.answered:hover
+  background-color: #475949
+  border-color: #080
+.question.answered>span
+  color: #fd78a8
+.question.duplicate
+  background-color: #3d3131
+  border: 3px solid #C00
+.question.duplicate:hover
+  background-color: #594747
+  border-color: #C00
+.vanish
+  display: none
+.question.current, .question.current:hover, .question.current:active, .question.current:link, .question.current:visited, .question.current.answered:hover
+  border-color: #FC4
+  box-shadow: 0px 0px 15px #FC4 inset
+.question img
+  display: block
+
+form
+  .submit-quiz
+    display: block
+    float: left
+    clear: both
+    border: none
+    cursor: pointer
+
+    width: 10em
+    height: 266px
+    background-color: transparent
+    background-image: url( "../i/submit.gif" )
+    background-repeat: no-repeat
+    background-position: center
+
+    color: transparent
+    font-size: 4em
+    font-family: Times
+    text-align: center
+    &:hover
+      color: #800
+    &:active
+      background-position: 50% 12px
+      color: #F00
+
+/* For the grading sheet only: */
+
+div.example
+  display: block
+  clear: both
+  margin-bottom: 1em
+
+.example>h2
+  margin-bottom: 0em
+
+.example>div
+  margin-top: 0em
