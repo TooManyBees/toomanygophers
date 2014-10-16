@@ -6,9 +6,14 @@ import (
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-  sections := readSections()
-  indexTempl := pageCache.get("main")
-  indexTempl.ExecuteTemplate(w, "page", sections)
+  if r.URL.Path == "/" {
+    sections := readSections()
+    indexTempl := pageCache.get("main")
+    indexTempl.ExecuteTemplate(w, "page", sections)
+  } else {
+    fmt.Print("  not found")
+    w.WriteHeader(http.StatusNotFound)
+  }
 }
 
 func avatarHandler(w http.ResponseWriter, r *http.Request) {
@@ -42,7 +47,7 @@ func loggingHandler(handler func(http.ResponseWriter, *http.Request), methods ..
   }
 
   return func(w http.ResponseWriter, r *http.Request) {
-    fmt.Printf("%s  %s", r.RemoteAddr, r.URL)
+    fmt.Printf("%s  %s", r.RemoteAddr, r.URL.Path)
     if len(methods) == 0 || includes(r.Method, methods...) {
       handler(w, r)
     } else {
