@@ -19,11 +19,11 @@ func avatarHandler(w http.ResponseWriter, r *http.Request) {
 func quizHandler(w http.ResponseWriter, r *http.Request) {
   if r.Method == "GET" {
     comics := comicStore.random(20)
-    for _, c := range comics {
-      fmt.Fprintln(w, c.Title)
-    }
-    //quizTempl := pageCache.getTemplate("quiz", "quiz")
-    //quizTempl.ExecuteTemplate(w, "quiz", comics)
+    // for _, c := range comics {
+    //   fmt.Fprintln(w, c.Title)
+    // }
+    quizTempl := pageCache.get("quiz")
+    quizTempl.ExecuteTemplate(w, "page", comics)
   } else if r.Method == "POST" {
     //
   }
