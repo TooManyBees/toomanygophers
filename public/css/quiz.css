@@ -148,29 +148,23 @@
   display: block;
   float: left;
   clear: both; }
-
-.question:hover {
-  border-color: #45473d;
-  background-color: #45473d; }
-
-.question.answered {
-  background-color: #313d32;
-  border: 3px solid #008800; }
-
-.question.answered:hover {
-  background-color: #475949;
-  border-color: #008800; }
-
-.question.answered > span {
-  color: #fd78a8; }
-
-.question.duplicate {
-  background-color: #3d3131;
-  border: 3px solid #cc0000; }
-
-.question.duplicate:hover {
-  background-color: #594747;
-  border-color: #cc0000; }
+  .question:hover {
+    border-color: #45473d;
+    background-color: #45473d; }
+  .question.answered {
+    background-color: #313d32;
+    border: 3px solid #008800; }
+    .question.answered:hover {
+      background-color: #475949;
+      border-color: #008800; }
+    .question.answered > span {
+      color: #fd78a8; }
+  .question.duplicate {
+    background-color: #3d3131;
+    border: 3px solid #cc0000; }
+    .question.duplicate:hover {
+      background-color: #594747;
+      border-color: #cc0000; }
 
 .vanish {
   display: none; }
@@ -205,13 +199,11 @@ form .submit-quiz {
     color: red; }
 
 /* For the grading sheet only: */
-div.example {
+.example {
   display: block;
   clear: both;
   margin-bottom: 1em; }
-
-.example > h2 {
-  margin-bottom: 0em; }
-
-.example > div {
-  margin-top: 0em; }
+  .example > h2 {
+    margin-bottom: 0em; }
+  .example > div {
+    margin-top: 0em; }

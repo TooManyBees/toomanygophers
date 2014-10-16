@@ -16,6 +16,13 @@
 {{end}}
 
 {{define "body"}}
+
+<header>
+  <h1>Spamusement Pop Quiz!</h1>
+  <span id="status-unanswered">{{len .}} uncaptioned comics</span>
+  <span id="status-duplicates">0 duplicate answers</span>
+</header>
+
 <div class="palette">
 {{range .}}
 {{template "comic_title" .}}

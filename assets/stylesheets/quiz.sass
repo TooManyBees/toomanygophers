@@ -151,30 +151,30 @@
   background-color: transparent
   border: 3px solid #272822
   border-radius: 4px
-  
+
   font-size: 1.5em
   color: #EEE
 
   display: block
   float: left
   clear: both
-.question:hover
-  border-color: #45473d
-  background-color: #45473d
-.question.answered
-  background-color: #313d32
-  border: 3px solid #080
-.question.answered:hover
-  background-color: #475949
-  border-color: #080
-.question.answered>span
-  color: #fd78a8
-.question.duplicate
-  background-color: #3d3131
-  border: 3px solid #C00
-.question.duplicate:hover
-  background-color: #594747
-  border-color: #C00
+  &:hover
+    border-color: #45473d
+    background-color: #45473d
+  &.answered
+    background-color: #313d32
+    border: 3px solid #080
+    &:hover
+      background-color: #475949
+      border-color: #080
+    &>span
+      color: #fd78a8
+  &.duplicate
+    background-color: #3d3131
+    border: 3px solid #C00
+    &:hover
+      background-color: #594747
+      border-color: #C00
 .vanish
   display: none
 .question.current, .question.current:hover, .question.current:active, .question.current:link, .question.current:visited, .question.current.answered:hover
@@ -210,13 +210,11 @@ form
 
 /* For the grading sheet only: */
 
-div.example
+.example
   display: block
   clear: both
   margin-bottom: 1em
-
-.example>h2
-  margin-bottom: 0em
-
-.example>div
-  margin-top: 0em
+  &>h2
+    margin-bottom: 0em
+  &>div
+    margin-top: 0em
