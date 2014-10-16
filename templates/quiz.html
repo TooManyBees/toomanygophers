@@ -1,6 +1,6 @@
 {{define "title"}}Spamusement Pop Quiz!{{end}}
 {{define "stylesheets"}}
-<link rel="stylesheet" type="text/css" href="s/css/quiz.css">
+<link rel="stylesheet" type="text/css" href="s/quiz.css">
 {{end}}
 
 {{define "comic_title"}}
@@ -9,7 +9,7 @@
 
 {{define "comic_image"}}
 <figure class="question">
-  <img src="s/i/comics/{{.Image}}">
+  <img src="s/comics/{{.Image}}">
   <figcaption>NO TITLE SELECTED</figcaption>
   <input type="hidden" name="q_{{.Id}}" value="0">
 </figure>
@@ -30,7 +30,7 @@
 </div>
 
 <div class="instructions">
-  <p>Match each <a href="http://www.spamusers.com">Spamusement</a> with its spam line. (Or die trying.) <img class="emote" src="../s/i/serious.png"/></p>
+  <p>Match each <a href="http://www.spamusers.com">Spamusement</a> with its spam line. (Or die trying.) <img class="emote" src="s/serious.png"/></p>
   <ul>
   <li>Click on a comic to bring up the list of subject lines, then click on a line to assign it to that comic.</li>
   <li>Spam lines will disappear from the list as you assign them to comics. Hit <em>Show All</em> to see them in the list again.

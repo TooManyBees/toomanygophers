@@ -1,11 +1,11 @@
 {{define "title"}}TooManyBees!{{end}}
 {{define "stylesheets"}}
-<link rel="stylesheet" type="text/css" href="s/css/main_menu.css">
+<link rel="stylesheet" type="text/css" href="s/main_menu.css">
 {{end}}
 
 {{define "section"}}<section class="mainrow">
-  <div class="picture-frame" style="background-image:url('s/i/{{.MainPic}}');"></div>
-  <div class="sidebar" style="background-image:url('s/i/{{.MenuPic}}');{{.MenuStyle}}">
+  <div class="picture-frame" style="background-image:url('s/{{.MainPic}}');"></div>
+  <div class="sidebar" style="background-image:url('s/{{.MenuPic}}');{{.MenuStyle}}">
     <ul>
       <h1>{{.Title}}</h1>
       {{range .Lines}}

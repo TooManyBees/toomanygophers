@@ -108,7 +108,7 @@ code, samp {
   margin: 20px 0; }
 
 .sheet ul {
-  list-style-image: url("../i/bee16.png"); }
+  list-style-image: url("bee16.png"); }
 
 .sheet li {
   margin-bottom: 0.1em;
@@ -122,7 +122,7 @@ code, samp {
   height: 135px;
   width: 100%;
   z-index: -10;
-  background: #272822 url("../i/smear.jpg") no-repeat; }
+  background: #272822 url("smear.jpg") no-repeat; }
 
 .sheet:first-of-type:before {
   top: -120px;
