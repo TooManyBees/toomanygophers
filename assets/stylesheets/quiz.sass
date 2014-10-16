@@ -1,154 +1,32 @@
-.header
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  height: 2.5em
-  background-color: transparent
-  overflow: hidden
-
-/* Both "title text" and "title url" have this class */
-  .title
-    vertical-align: middle
-    display: inline-block
-    margin-left: 10px
-    font-size: 1.75em
-    &.title.vanish
-      display: none
-
-  .url
-    display: none
-    color: #FFFFFF
-    font-size: 1.75em
-    &.yet_still_visible
-      display: inline-block
-
-.instructions
-  width: 45em
-  padding: 0.5em
-  border: 1px dotted #45473d
+.pill
+  padding: 0 4px
+  margin: 2px 0
   border-radius: 4px
-  background-color: #2f3029
-  p
-    text-align: center
-    font-size: 1.25em
-    margin-top: 0.25em
-    margin-bottom: 0.25em
-  ul
-    margin-top: 0em
-    margin-left: -1em
-  li
-    margin-top: 0.3em
-  .duplicate
-    /*background-color: #3d3131*/
-    border: 2px solid #A00
-    border-radius: 4px
-    padding-left: 2px
-    padding-right: 2px
-  em
-    color: #6fdbff
-
-.button
-  cursor: pointer
   display: inline-block
 
-  border-radius: 0.25em
-  border: 2px solid black
-
-  background-color: #45473d
-
-  height: 1.5em
-  width: 7em
-  text-align: center
-  margin-top: 0.4em
-  vertical-align: middle
-  margin-left: 0.5em
-  float: left
-  &.right
-    float: right
-    margin-left: 0em
-    margin-right: 0.5em
-  &:hover
-    background-color: #57594d
-  &.depressed
-    color: #8d435e
-    background-color: #CEC
-    box-shadow: 0px 0px 10px #000 inset
-  a
-    text-decoration: none
-
-#wrapper
-  margin-top: 2.5em
-  left: 10px
-  right: 360px
-  bottom: 0
-  &>p
-    margin-left: 5em
-
 .palette
-  display: none
+  box-sizing: border-box
+  line-height: 1.7
+  width: 100%
+  max-height: 250px
   position: fixed
-  width: 350px
-  right: 0
-  top: 2.5em
   bottom: 0
-  background-color: transparent
-  border-left: 3px solid #fd78a8
+  left: 0
+  background-color: rgba(39, 40, 34, 0.95)
+  border-top: 3px solid #fd78a8
   padding: 5px
   overflow: auto
-  a
-    text-shadow: none
-  #CLEAR
-    text-align: center
-    /*background-color: #A14*/
-    background-color: #b35477
-    color: #EEE
-    font-weight: bold
-    font-style: italic
-    &.show
-      display: block
-  &.current
-    display: block
-  a
-    color: #fd78a8
+  text-align: center
+  .answer
+    color: #fff
+    background-color: #fd78a8
     cursor: pointer
-    display: block
-    padding: 2px 0px
-    text-decoration: none
-    border-bottom: 1px dotted #45473d
-    &.chosen
-      display: none
-      &.yet_still_visible
-        display: block
-    &:hover
-      color: #ff84b0
-      background-color: #3b3d34
-    &:active
-      color: #ffa6c6
-      background-color: #3b3d34  
-    &.chosen,
-    &.chosen:hover
-      color: #888
-    &.chosen:active
-      color: #AAA
-
-    &.duplicate
-      background-color: #3d3436
-      color: #888
-    &.duplicate:hover,
-    &.duplicate:active
-      background-color: #4d4144
-
-.header.background, .palette.background
-  opacity: 0.95
-  background-color: #272822
 
 .question
   margin: 10px 10px 10px 0
   padding: 10px
   cursor: pointer
 
-  background-color: transparent
   border: 3px solid #272822
   border-radius: 4px
 
