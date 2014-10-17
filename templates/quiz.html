@@ -8,10 +8,9 @@
 {{end}}
 
 {{define "comic_image"}}
-<figure class="question">
+<figure class="question" data-id="{{.Image}}">
   <img src="s/comics/{{.Image}}">
   <figcaption>NO TITLE SELECTED</figcaption>
-  <input type="hidden" name="q_{{.Id}}" value="0">
 </figure>
 {{end}}
 
@@ -19,8 +18,13 @@
 
 <header>
   <h1>Spamusement Pop Quiz!</h1>
-  <span id="status-unanswered">{{len .}} uncaptioned comics</span>
-  <span id="status-duplicates">0 duplicate answers</span>
+  <p>
+    Match each <a href="http://www.spamusers.com">Spamusement</a> with its spam line. (Or die trying.) <img class="emote" src="s/serious.png"/>
+  </p>
+  <p>
+    <span id="count-unanswered">{{len .}}</span> uncaptioned comics
+    <span id="count-duplicates">0</span> duplicate answers
+  </p>
 </header>
 
 <div class="palette">
@@ -29,9 +33,7 @@
 {{end}}
 </div>
 
-<div class="instructions">
-  <p>Match each <a href="http://www.spamusers.com">Spamusement</a> with its spam line. (Or die trying.) <img class="emote" src="s/serious.png"/></p>
-  <ul>
+<!-- <ul class="instructions">
   <li>Click on a comic to bring up the list of subject lines, then click on a line to assign it to that comic.</li>
   <li>Spam lines will disappear from the list as you assign them to comics. Hit <em>Show All</em> to see them in the list again.
     You can assign spam lines to multiple comics if you're unsure of the correct answer.
@@ -39,13 +41,10 @@
   <li>Use the buttons <em>Hide Answered</em> and <em>Only Duplicates</em> to filter the visible comics.</li>
   <li>Hit <em>Save Progress</em> to get a link back to the current state of the quiz!</li>
   <li><em>Submit</em> is all the way at the bottom.</li>
-  </ul>
-</div>
+</ul> -->
 
-<form action="quiz" method="POST">
 {{range .}}
 {{template "comic_image" .}}
 {{end}}
-<input class="submit-quiz" type="submit" value="YOU WILL SUBMIT">
-</form>
+<button class="submit-quiz" type="button">YOU WILL SUBMIT</button>
 {{end}}

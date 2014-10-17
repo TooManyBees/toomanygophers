@@ -1,3 +1,6 @@
+main {
+  width: inherit; }
+
 .pill {
   padding: 0 4px;
   margin: 2px 0;
@@ -23,14 +26,13 @@
     cursor: pointer; }
 
 .question {
-  margin: 10px 10px 10px 0;
+  margin: 10px;
   padding: 10px;
   cursor: pointer;
   border: 3px solid #272822;
   border-radius: 4px;
-  font-size: 1.5em;
+  font-size: 150%;
   color: #eeeeee;
-  display: block;
   float: left;
   clear: both; }
   .question:hover {
@@ -38,7 +40,7 @@
     background-color: #45473d; }
   .question.answered {
     background-color: #313d32;
-    border: 3px solid #008800; }
+    border-color: #008800; }
     .question.answered:hover {
       background-color: #475949;
       border-color: #008800; }
@@ -46,40 +48,35 @@
       color: #fd78a8; }
   .question.duplicate {
     background-color: #3d3131;
-    border: 3px solid #cc0000; }
+    border-color: #cc0000; }
     .question.duplicate:hover {
       background-color: #594747;
       border-color: #cc0000; }
 
-.vanish {
-  display: none; }
+.question img {
+  max-height: 400px;
+  max-width: 600px;
+  height: auto;
+  width: auto; }
 
 .question.current, .question.current:hover, .question.current:active, .question.current:link, .question.current:visited, .question.current.answered:hover {
   border-color: #ffcc44;
   box-shadow: 0px 0px 15px #ffcc44 inset; }
 
-.question img {
-  display: block; }
-
-form .submit-quiz {
+.submit-quiz {
   display: block;
-  float: left;
   clear: both;
   border: none;
   cursor: pointer;
-  width: 10em;
   height: 266px;
-  background-color: transparent;
-  background-image: url("submit.gif");
-  background-repeat: no-repeat;
-  background-position: center;
+  background: transparent url("submit.gif") no-repeat center;
   color: transparent;
   font-size: 4em;
   font-family: Times;
   text-align: center; }
-  form .submit-quiz:hover {
+  .submit-quiz:hover {
     color: #880000; }
-  form .submit-quiz:active {
+  .submit-quiz:active {
     background-position: 50% 12px;
     color: red; }
 

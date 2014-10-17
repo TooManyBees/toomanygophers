@@ -1,3 +1,6 @@
+main
+  width: inherit
+
 .pill
   padding: 0 4px
   margin: 2px 0
@@ -23,17 +26,16 @@
     cursor: pointer
 
 .question
-  margin: 10px 10px 10px 0
+  margin: 10px
   padding: 10px
   cursor: pointer
 
   border: 3px solid #272822
   border-radius: 4px
 
-  font-size: 1.5em
+  font-size: 150%
   color: #EEE
 
-  display: block
   float: left
   clear: both
   &:hover
@@ -41,7 +43,7 @@
     background-color: #45473d
   &.answered
     background-color: #313d32
-    border: 3px solid #080
+    border-color: #080
     &:hover
       background-color: #475949
       border-color: #080
@@ -49,42 +51,40 @@
       color: #fd78a8
   &.duplicate
     background-color: #3d3131
-    border: 3px solid #C00
+    border-color: #C00
     &:hover
       background-color: #594747
       border-color: #C00
-.vanish
-  display: none
+
+.question
+  img
+    max-height: 400px
+    max-width: 600px
+    height: auto
+    width: auto
+
 .question.current, .question.current:hover, .question.current:active, .question.current:link, .question.current:visited, .question.current.answered:hover
   border-color: #FC4
   box-shadow: 0px 0px 15px #FC4 inset
-.question img
+
+.submit-quiz
   display: block
+  clear: both
+  border: none
+  cursor: pointer
 
-form
-  .submit-quiz
-    display: block
-    float: left
-    clear: both
-    border: none
-    cursor: pointer
+  height: 266px
+  background: transparent url( "submit.gif" ) no-repeat center
 
-    width: 10em
-    height: 266px
-    background-color: transparent
-    background-image: url( "submit.gif" )
-    background-repeat: no-repeat
-    background-position: center
-
-    color: transparent
-    font-size: 4em
-    font-family: Times
-    text-align: center
-    &:hover
-      color: #800
-    &:active
-      background-position: 50% 12px
-      color: #F00
+  color: transparent
+  font-size: 4em
+  font-family: Times
+  text-align: center
+  &:hover
+    color: #800
+  &:active
+    background-position: 50% 12px
+    color: #F00
 
 /* For the grading sheet only: */
 
