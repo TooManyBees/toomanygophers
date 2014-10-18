@@ -3,6 +3,7 @@ package main
 import (
   "net/http"
   "fmt"
+  "os"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -58,13 +59,42 @@ func loggingHandler(handler func(http.ResponseWriter, *http.Request), methods ..
   }
 }
 
+func deployAssets(env string) {
+  if env == "production" {
+    fmt.Println("Running in Production")
+    // uglify js files in assets/javascripts and copy to public
+  } else {
+    fmt.Println("Running in Development")
+    // symlink js files from assets/javascripts to public
+  }
+}
+
+func parseOptions() (string, string) {
+  env := "development"
+  port := "8080"
+  if len(os.Args) > 1 {
+    args := os.Args[1:]
+    lastIndex := len(args) - 1
+    for i, arg := range args {
+      if arg == "-e" && i < lastIndex {
+        env = args[i+1]
+      } else if arg == "-p" && i < lastIndex {
+        port = args[i+1]
+      }
+    }
+  }
+  return env, port
+}
+
 var pageCache = PageCache{}
 var comicStore = ComicStore{}
 func main() {
+  env, port := parseOptions()
+  deployAssets(env)
   comicStore.init()
   http.HandleFunc("/", loggingHandler(indexHandler, "GET"))
   http.HandleFunc("/avatar", loggingHandler(avatarHandler, "GET"))
   http.HandleFunc("/quiz", loggingHandler(quizHandler, "GET", "POST"))
   http.Handle("/s/", http.StripPrefix("/s/", http.FileServer(http.Dir("public"))))
-  http.ListenAndServe(":8080", nil)
+  http.ListenAndServe(":"+port, nil)
 }
