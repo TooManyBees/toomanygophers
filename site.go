@@ -63,12 +63,13 @@ func loggingHandler(handler func(http.ResponseWriter, *http.Request), methods ..
 func deployAssets(env string) {
   // TODO: make this depend on environment (uglify instead of link in prod)
   scripts, _ := filepath.Glob("assets/javascripts/*.js")
+  cwd, _ := os.Getwd()
   for _, script := range scripts {
     filename := filepath.Base(script)
     publicScript := filepath.Join("public", filename)
     _, err := os.Lstat(publicScript)
     if os.IsNotExist(err) {
-      linkErr := os.Symlink(script, publicScript)
+      linkErr := os.Symlink(filepath.Join(cwd, script), publicScript)
       if linkErr != nil {
         fmt.Println(linkErr)
       }
