@@ -4,6 +4,7 @@ import (
   "net/http"
   "fmt"
   "os"
+  "path/filepath"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -60,12 +61,18 @@ func loggingHandler(handler func(http.ResponseWriter, *http.Request), methods ..
 }
 
 func deployAssets(env string) {
-  if env == "production" {
-    fmt.Println("Running in Production")
-    // uglify js files in assets/javascripts and copy to public
-  } else {
-    fmt.Println("Running in Development")
-    // symlink js files from assets/javascripts to public
+  // TODO: make this depend on environment (uglify instead of link in prod)
+  scripts, _ := filepath.Glob("assets/javascripts/*.js")
+  for _, script := range scripts {
+    filename := filepath.Base(script)
+    publicScript := filepath.Join("public", filename)
+    _, err := os.Lstat(publicScript)
+    if os.IsNotExist(err) {
+      linkErr := os.Symlink(script, publicScript)
+      if linkErr != nil {
+        fmt.Println(linkErr)
+      }
+    }
   }
 }
 
@@ -96,5 +103,6 @@ func main() {
   http.HandleFunc("/avatar", loggingHandler(avatarHandler, "GET"))
   http.HandleFunc("/quiz", loggingHandler(quizHandler, "GET", "POST"))
   http.Handle("/s/", http.StripPrefix("/s/", http.FileServer(http.Dir("public"))))
+  fmt.Printf("Running in %s on port %s\n", env, port)
   http.ListenAndServe(":"+port, nil)
 }
