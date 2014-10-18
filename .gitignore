@@ -2,3 +2,4 @@
 *.rif
 site
 .sass-cache
+/public/*.js
