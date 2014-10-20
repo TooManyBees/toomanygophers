@@ -7,6 +7,7 @@ import (
   "math/rand"
   "time"
   "strings"
+  "strconv"
 )
 
 type Quiz struct {
@@ -18,6 +19,7 @@ type Comic struct {
   Id int
   Title string
   Image string
+  AltImage string
 }
 
 type ComicStore struct {
@@ -55,34 +57,45 @@ func sqlIn(arr []int) string {
   return replaced[1:len(replaced)-1]
 }
 
+func fromRows(rows sql.Rows, callback func(int, string, string, string)) {
+
+  for rows.Next() {
+    var id int
+    var title string
+    var image string
+    var altImage string
+    rows.Scan(&id, &title, &image, &altImage)
+    callback(id, title, image, altImage)
+  }
+}
+
+func (cs *ComicStore) Find(ids []int) *sql.Rows {
+  query := fmt.Sprintf("SELECT * FROM comics WHERE id IN (%s)", sqlIn(ids))
+  rows, _ := cs.db.Query(query)
+  return rows
+}
+
+func (cs *ComicStore) All() *sql.Rows {
+  rows, _ := cs.db.Query("SELECT * FROM comics ORDER BY id")
+  return rows
+}
+
 // Return a random selection of n comics from the Comics table
 // If n >= the number of saved comics, just return the table in original order
 func (cs *ComicStore) random(n int) []Comic {
   ids := cs.rand.Perm(int(cs.Count()))
   returnAll := n >= cs.Count()
 
-  var query string
+  var rows sql.Rows
   if returnAll {
-    query = fmt.Sprintf("SELECT * FROM comics")
+    rows = *cs.All()
   } else {
-    query = fmt.Sprintf("SELECT * FROM comics WHERE id IN (%s)", sqlIn(ids[:n]))
+    rows = *cs.Find(ids[:n])
   }
 
-  rows, err := cs.db.Query(query)
-  if err != nil {
-    fmt.Println(err)
-  }
-
-  var comics = make([]Comic, 0, n)
-
-  for rows.Next() {
-    var id int
-    var title string
-    var image string
-    var alt_image string
-    rows.Scan(&id, &title, &image, &alt_image)
-    comics = append(comics, Comic{id, title, image})
-  }
-
+  var comics = make([]Comic, 0, len(ids))
+  fromRows(rows, func(id int, title string, image string, altImage string) {
+    comics = append(comics, Comic{id, title, image, altImage})
+  })
   return comics
 }
