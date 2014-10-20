@@ -99,3 +99,36 @@ func (cs *ComicStore) random(n int) []Comic {
   })
   return comics
 }
+
+func (cs *ComicStore) ParseAnswers(form map[string][]string) (int, int, int) {
+  var ids []int
+  var answers = make(map[int]string)
+  var comics = make(map[int]string)
+  for k, v := range form {
+    if true {
+      id, _ := strconv.ParseInt(k, 10, 32)
+      ids = append(ids, int(id))
+      answers[int(id)] = v[0]
+    }
+  }
+
+  { // Make map(id => image) from database
+    query := fmt.Sprintf("SELECT * FROM comics WHERE id IN (%s)", sqlIn(ids))
+    rows, _ := cs.db.Query(query)
+    fromRows(*rows, func(id int, title string, image string, altImage string) {
+      comics[id] = image
+    })
+  }
+
+  var unanswered = 0
+  var answered = 0
+  for _, id := range ids {
+    if answers[id] == "" {
+      unanswered += 1
+    } else if answers[id] == comics[id] {
+      answered += 1
+    }
+  }
+
+  return answered, unanswered, len(ids)
+}

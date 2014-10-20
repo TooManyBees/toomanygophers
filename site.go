@@ -32,7 +32,11 @@ func quizHandler(w http.ResponseWriter, r *http.Request) {
     quizTempl := pageCache.get("quiz")
     quizTempl.ExecuteTemplate(w, "page", comics)
   } else if r.Method == "POST" {
-    //
+    r.ParseForm()
+    correct, unanswered, total := comicStore.ParseAnswers(r.Form)
+    json := fmt.Sprintf("{\"correct\":%d,\"unanswered\":%d,\"total\":%d}\n", correct, unanswered, total)
+    w.Header().Set("Content-Type", "application/json")
+    w.Write([]byte(json))
   }
 }
 
