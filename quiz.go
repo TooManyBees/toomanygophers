@@ -29,6 +29,12 @@ type ComicStore struct {
   rand *rand.Rand
 }
 
+type QuizResults struct {
+  Answered int
+  Unanswered int
+  Total int
+}
+
 func (cs *ComicStore) init() {
   db, err := sql.Open("postgres", "dbname=spam_quiz sslmode=disable")
   if err != nil {
@@ -100,7 +106,7 @@ func (cs *ComicStore) random(n int) []Comic {
   return comics
 }
 
-func (cs *ComicStore) ParseAnswers(form map[string][]string) (int, int, int) {
+func (cs *ComicStore) ParseAnswers(form map[string][]string) QuizResults {
   var ids []int
   var answers = make(map[int]string)
   var comics = make(map[int]string)
@@ -130,5 +136,5 @@ func (cs *ComicStore) ParseAnswers(form map[string][]string) (int, int, int) {
     }
   }
 
-  return answered, unanswered, len(ids)
+  return QuizResults{answered, unanswered, len(ids)}
 }

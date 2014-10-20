@@ -5,6 +5,7 @@ import (
   "fmt"
   "os"
   "path/filepath"
+  "encoding/json"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -33,10 +34,14 @@ func quizHandler(w http.ResponseWriter, r *http.Request) {
     quizTempl.ExecuteTemplate(w, "page", comics)
   } else if r.Method == "POST" {
     r.ParseForm()
-    correct, unanswered, total := comicStore.ParseAnswers(r.Form)
-    json := fmt.Sprintf("{\"correct\":%d,\"unanswered\":%d,\"total\":%d}\n", correct, unanswered, total)
-    w.Header().Set("Content-Type", "application/json")
-    w.Write([]byte(json))
+    results := comicStore.ParseAnswers(r.Form)
+    resultsJson, err := json.Marshal(results)
+    if err != nil {
+      w.WriteHeader(http.StatusInternalServerError)
+    } else {
+      w.Header().Set("Content-Type", "application/json")
+      w.Write(resultsJson)
+    }
   }
 }
 
