@@ -1,13 +1,17 @@
 main {
   width: inherit; }
 
+header {
+  text-align: center; }
+
 .pill {
   padding: 0 4px;
   margin: 2px 0;
   border-radius: 4px;
   display: inline-block; }
 
-.palette {
+#palette {
+  font-size: 85%;
   box-sizing: border-box;
   line-height: 1.7;
   width: 100%;
@@ -20,7 +24,10 @@ main {
   padding: 5px;
   overflow: auto;
   text-align: center; }
-  .palette .answer {
+  #palette .status {
+    clear: both;
+    margin: auto; }
+  #palette .answer {
     color: white;
     background-color: #fd78a8;
     cursor: pointer; }
@@ -35,6 +42,10 @@ main {
   color: #eeeeee;
   float: left;
   clear: both; }
+  @media (max-width: 640px) {
+    .question {
+      margin: 5px 0;
+      padding: 5px; } }
   .question:hover {
     border-color: #45473d;
     background-color: #45473d; }
@@ -58,6 +69,9 @@ main {
   max-width: 600px;
   height: auto;
   width: auto; }
+  @media (max-width: 640px) {
+    .question img {
+      max-width: 100%; } }
 
 .question.current, .question.current:hover, .question.current:active, .question.current:link, .question.current:visited, .question.current.answered:hover {
   border-color: #ffcc44;

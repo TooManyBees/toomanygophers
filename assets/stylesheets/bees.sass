@@ -1,3 +1,5 @@
+$mobileQuery: "(max-width: 640px)"
+
 $dark-gray: #272822
 $dark-gray-accent: #2f3029
 $medium-pink: #fd78a8
@@ -77,8 +79,14 @@ code, samp
   display: block
   margin: 30px 0
   clear:  both
+  @media #{$mobileQuery}
+    margin: 0
   &>img
     margin: auto
+    @media #{$mobileQuery}
+      max-width: 100%
+      height: auto
+
 
 .content
   background-color: $dark-gray-accent

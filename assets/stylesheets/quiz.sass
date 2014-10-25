@@ -1,5 +1,10 @@
+$mobileQuery: "(max-width: 640px)"
+
 main
   width: inherit
+
+header
+  text-align: center
 
 .pill
   padding: 0 4px
@@ -7,7 +12,8 @@ main
   border-radius: 4px
   display: inline-block
 
-.palette
+#palette
+  font-size: 85%
   box-sizing: border-box
   line-height: 1.7
   width: 100%
@@ -20,6 +26,9 @@ main
   padding: 5px
   overflow: auto
   text-align: center
+  .status
+    clear: both
+    margin: auto
   .answer
     color: #fff
     background-color: #fd78a8
@@ -29,6 +38,10 @@ main
   margin: 10px
   padding: 10px
   cursor: pointer
+
+  @media #{$mobileQuery}
+    margin: 5px 0
+    padding: 5px
 
   border: 3px solid #272822
   border-radius: 4px
@@ -62,6 +75,8 @@ main
     max-width: 600px
     height: auto
     width: auto
+    @media #{$mobileQuery}
+      max-width: 100%
 
 .question.current, .question.current:hover, .question.current:active, .question.current:link, .question.current:visited, .question.current.answered:hover
   border-color: #FC4

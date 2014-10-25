@@ -69,8 +69,15 @@ code, samp {
   display: block;
   margin: 30px 0;
   clear: both; }
+  @media (max-width: 640px) {
+    .logo {
+      margin: 0; } }
   .logo > img {
     margin: auto; }
+    @media (max-width: 640px) {
+      .logo > img {
+        max-width: 100%;
+        height: auto; } }
 
 .content {
   background-color: #2f3029;
