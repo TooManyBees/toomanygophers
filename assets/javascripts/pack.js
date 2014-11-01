@@ -1,4 +1,4 @@
-// (function() {
+(function() {
   function yoinkElements(parent, selector) {
     var i = 0,
         widthMap = [],
@@ -19,7 +19,8 @@
 
   function getLine(elements, maxWidth) {
     // The last element in elements is the smallest one
-    var line = elements.splice(-1,1),
+    var i = Math.floor((Math.random() * elements.length)),
+        line = elements.splice(i,1),
         pill,
         currentWidth;
     while ((currentWidth = lineWidth(line)) < maxWidth) {
@@ -54,6 +55,16 @@
     return null;
   }
 
+  function replace(parent, lines) {
+    var i = 0, j = 0, line;
+    for (i; i < lines.length; i++) {
+      line = lines[i];
+      for (j=0; j < line.length; j++) {
+        parent.appendChild(line[j].node);
+      }
+    }
+  }
+
   function pack(parent, selector) {
     var items = yoinkElements(parent, selector),
         lines = [],
@@ -62,5 +73,7 @@
       lines.push(getLine(items, maxWidth));
     }
     console.log(lines)
+    replace(parent, lines);
   }
-// });
+  window.pack = pack;
+})();
