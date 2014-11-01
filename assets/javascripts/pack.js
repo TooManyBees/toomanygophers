@@ -1,4 +1,6 @@
 (function() {
+  var PILL_MARGIN = 2;
+
   function yoinkElements(parent, selector) {
     var i = 0,
         widthMap = [],
@@ -23,7 +25,7 @@
         line = elements.splice(i,1),
         pill,
         currentWidth;
-    while ((currentWidth = lineWidth(line)) < maxWidth) {
+    while ((currentWidth = lineWidth(line, PILL_MARGIN)) < maxWidth) {
       pill = bestPill(elements, maxWidth - currentWidth)
       if (pill === null) { break; }
       line.push(pill);
@@ -35,7 +37,6 @@
     var sum = 0,
         padding = padding || 0;
     for (elem in line) {
-      // console.log(line[elem])
       sum += line[elem].width;
     }
     sum += (line.length - 1) * padding;
@@ -56,11 +57,13 @@
   }
 
   function replace(parent, lines) {
-    var i = 0, j = 0, line;
+    var i = 0, j = 0, line, wrapper;
     for (i; i < lines.length; i++) {
       line = lines[i];
+      wrapper = document.createElement('div');
       for (j=0; j < line.length; j++) {
-        parent.appendChild(line[j].node);
+        wrapper.appendChild(line[j].node);
+        parent.appendChild(wrapper);
       }
     }
   }
@@ -72,7 +75,6 @@
     while (items.length > 0) {
       lines.push(getLine(items, maxWidth));
     }
-    console.log(lines)
     replace(parent, lines);
   }
   window.pack = pack;

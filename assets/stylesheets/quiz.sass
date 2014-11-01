@@ -1,4 +1,5 @@
 $mobileQuery: "(max-width: 640px)"
+$pill-margin: 2px
 
 main
   width: inherit
@@ -8,9 +9,12 @@ header
 
 .pill
   padding: 0 4px
-  margin: 2px 0
+  margin: $pill-margin 0 $pill-margin $pill-margin
   border-radius: 4px
   display: inline-block
+
+.pill:first-child
+  margin: $pill-margin 0
 
 #palette
   font-size: 85%

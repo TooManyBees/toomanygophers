@@ -6,9 +6,12 @@ header {
 
 .pill {
   padding: 0 4px;
-  margin: 2px 0;
+  margin: 2px 0 2px 2px;
   border-radius: 4px;
   display: inline-block; }
+
+.pill:first-child {
+  margin: 2px 0; }
 
 #palette {
   font-size: 85%;
